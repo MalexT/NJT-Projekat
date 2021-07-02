@@ -17,9 +17,11 @@ public class StudijskiProgram {
     @OneToMany(mappedBy = "studijskiProgram")
     private List<Modul> moduli;
     //id fakulteta,vise ka jedan
-
+    @ManyToOne
+    @JoinColumn(name = "fakultet_id")
+    private Fakultet fakultet;
     //id nivo studija, vise ka jedan
     @ManyToOne
-    @JoinColumn(name = "studijski_program_id")
+    @JoinColumn(name = "nivo_studija_id")
     private NivoStudija nivoStudija;
 }

@@ -14,5 +14,7 @@ public class OblikNastave {
     //id predmeta, vise ka vise
     @ManyToMany(mappedBy = "obliciNastave")
     private List<Predmet> predmeti;
+
+
 }
 

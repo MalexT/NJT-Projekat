@@ -17,7 +17,5 @@ public class Modul {
     private StudijskiProgram studijskiProgram;
     //id predmeta, vise ka vise
 
-    @ManyToMany(mappedBy = "moduli")
-    private List<Predmet> predmeti;
 
 }
