@@ -1,5 +1,7 @@
 package markovic.aleksa.njtprojekat.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,12 @@ public class OblikNastave {
     @ManyToMany(mappedBy = "obliciNastave")
     private List<Predmet> predmeti;
 
+    public int getId() {
+        return id;
+    }
 
+    public String getNaziv() {
+        return naziv;
+    }
 }
 
