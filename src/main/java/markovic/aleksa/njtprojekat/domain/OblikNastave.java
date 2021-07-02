@@ -8,7 +8,11 @@ import javax.persistence.Id;
 @Entity
 public class OblikNastave {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    private String naziv;
+
+    //id predmeta, vise ka vise
 }
 

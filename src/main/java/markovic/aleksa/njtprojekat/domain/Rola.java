@@ -8,6 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Rola {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
 }

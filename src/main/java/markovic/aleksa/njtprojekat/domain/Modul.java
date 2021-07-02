@@ -1,13 +1,20 @@
 package markovic.aleksa.njtprojekat.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Modul {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    private String naziv;
+    private int semestar;
+    //id od studijskog programa, vise ka jedan
+    @ManyToOne()
+    @JoinColumn(name ="studijski_program_id")
+    private StudijskiProgram studijskiProgram;
+    //id predmeta, vise ka vise
+
+
 }

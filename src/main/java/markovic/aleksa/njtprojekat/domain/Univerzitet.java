@@ -1,13 +1,16 @@
 package markovic.aleksa.njtprojekat.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Univerzitet {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    private String naziv;
+
+    @OneToMany(mappedBy = "univerzitet")
+    private List<Fakultet> fakulteti;
 }
