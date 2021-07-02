@@ -1,9 +1,6 @@
 package markovic.aleksa.njtprojekat.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class KorisnickiNalog {
@@ -14,6 +11,12 @@ public class KorisnickiNalog {
     private String username;
     private String password;
 
-    // zavrsitii do kraja
+    // korisnicki nalog ima jednu rolu
+    @ManyToOne
+    @JoinColumn(name="rola_id")
+    private Rola rola;
 
+    @OneToOne(optional = false)
+    @JoinColumn(name = "nastavno_osoblje_id")
+    private NastavnoOsoblje nastavnoOsoblje;
 }

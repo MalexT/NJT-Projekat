@@ -19,4 +19,7 @@ public class StudijskiProgram {
     //id fakulteta,vise ka jedan
 
     //id nivo studija, vise ka jedan
+    @ManyToOne
+    @JoinColumn(name = "studijski_program_id")
+    private NivoStudija nivoStudija;
 }

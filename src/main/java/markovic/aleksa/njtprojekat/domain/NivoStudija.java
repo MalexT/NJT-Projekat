@@ -2,10 +2,8 @@ package markovic.aleksa.njtprojekat.domain;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class NivoStudija {
@@ -14,5 +12,8 @@ public class NivoStudija {
     private int id;
 
     private String naziv;
+
+    @OneToMany(mappedBy = "nivoStudija")
+    private List<StudijskiProgram> studijskiProgrami;
 
 }

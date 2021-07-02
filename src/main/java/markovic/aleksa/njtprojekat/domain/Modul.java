@@ -1,6 +1,7 @@
 package markovic.aleksa.njtprojekat.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Modul {
@@ -16,5 +17,7 @@ public class Modul {
     private StudijskiProgram studijskiProgram;
     //id predmeta, vise ka vise
 
+    @ManyToMany(mappedBy = "moduli")
+    private List<Predmet> predmeti;
 
 }

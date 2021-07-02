@@ -1,9 +1,9 @@
 package markovic.aleksa.njtprojekat.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.w3c.dom.stylesheets.LinkStyle;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Predmet {
@@ -16,10 +16,16 @@ public class Predmet {
     private int espb;
 
     //vise ka vise sa oblikom nastave
+    @ManyToMany
+    @JoinTable(name="predmet_oblik_nastave",joinColumns =@JoinColumn(name = "predmet_id"),inverseJoinColumns = @JoinColumn(name = "oblik_nastave_id"))
+    private List<OblikNastave> obliciNastave;
 
     //vise ka vise sa modulom
+    @ManyToMany
+    @JoinTable(name="predmet_modul",joinColumns =@JoinColumn(name = "predmet_id"),inverseJoinColumns = @JoinColumn(name = "modul_id"))
+    private List<Modul> moduli;
 
-    // vise ka vise sa sa nastavnim osobljem
+    // vise ka vise sa sa nastavnim osobljem - anagazovanje pravi se tabela
 
 
 

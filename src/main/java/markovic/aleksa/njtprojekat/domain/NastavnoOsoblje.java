@@ -1,9 +1,6 @@
 package markovic.aleksa.njtprojekat.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class NastavnoOsoblje {
@@ -17,5 +14,12 @@ public class NastavnoOsoblje {
 
     //vise ka vise sa predmetom - angazovanje tabela
 
-    //korisnicki nalog many to one sa ignorom
+    //moze a i ne mora imati korisnicki nalog
+    @OneToOne(optional = true)
+    private KorisnickiNalog korisnickiNalog;
+
+
+    @ManyToOne
+    @JoinColumn(name="zvanje_id")
+    private Zvanje zvanje;
 }

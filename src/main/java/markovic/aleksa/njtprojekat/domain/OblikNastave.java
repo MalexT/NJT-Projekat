@@ -1,9 +1,7 @@
 package markovic.aleksa.njtprojekat.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class OblikNastave {
@@ -14,5 +12,7 @@ public class OblikNastave {
     private String naziv;
 
     //id predmeta, vise ka vise
+    @ManyToMany(mappedBy = "obliciNastave")
+    private List<Predmet> predmeti;
 }
 
