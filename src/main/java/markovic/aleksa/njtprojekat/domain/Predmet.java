@@ -1,6 +1,7 @@
 package markovic.aleksa.njtprojekat.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Setter
 public class Predmet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
