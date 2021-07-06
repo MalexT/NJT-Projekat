@@ -1,0 +1,48 @@
+<div class="columns is-centered">
+  <div class="column">
+    <div class="box" style="margin-top: 25px">
+      <p class="title">{{getTitle()}}</p>
+      <div class="fields">
+        <label class="label">Naziv</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+
+      <div class="fields">
+        <label class="label">Opis</label>
+        <div class="control">
+          <textarea class="textarea"
+                    placeholder="npr. Nakon slusanja ovog predmeta student ce biti u mogucnosti da..."></textarea>
+        </div>
+      </div>
+
+      <div class="fields">
+        <label class="label">Broj ESPB</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+
+      <div class="box" style="margin-top: 25px">
+        <div class="fields">
+          <label class="label">Oblik nastave</label>
+          <div class="control">
+            <!--            Ovde mozda da ide ngFor za listanje Oblika nastave za ove checkbox-ova-->
+            <label class="checkbox">
+              <input id="1" type="checkbox" (change)="checkValue()"/>
+              <!--              Ovde treba da ide tekst iz baze-->
+              Predavanja
+            </label> &nbsp;
+          </div>
+        </div>
+
+      </div>
+
+
+      <button class="button is-link">
+        Snimi
+      </button>
+    </div>
+  </div>
+</div>

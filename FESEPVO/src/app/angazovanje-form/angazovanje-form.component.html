@@ -1,0 +1,50 @@
+<div class="columns is-centered">
+  <div class="column">
+    <div class="box" style="margin-top: 25px">
+      <p class="title">{{getTitle()}}</p>
+      <div class="fields">
+        <div class="control">
+
+          <div class="columns">
+            <div class="column">
+              <div class="select">
+                <!--                  Predemete za ovaj select napuniti iz baze-->
+                <select>
+                  <option>Programiranje 1</option>
+                  <option>Programiranje 2</option>
+                  <option>Programiranje 3</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="column">
+              <button class="button is-link"> Izaberi predmet </button>
+            </div>
+          </div>
+
+          <!--            Ovde mozda da ide ngFor za listanje izabranih oblika nastave za izabrani predmet -->
+          <div class="columns">
+            <div class="column">
+              Oblik nastave
+            </div>
+            <div class="column">
+              <div class="select">
+                <!--                  Profesore za ovaj select da puni iz baze-->
+                <select>
+                  <option>Pera Peric</option>
+                  <option>Zika Zikic</option>
+                  <option>Mika Mikic</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="button is-link" style="margin-top: 25px;">
+        Snimi
+      </button>
+    </div>
+  </div>
+</div>

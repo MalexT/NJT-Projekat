@@ -1,0 +1,40 @@
+<router-outlet></router-outlet>
+
+
+<div class="content has-text-centered">
+  <p class="title">
+    <strong>SPISAK PREDMETA</strong>
+  </p>
+  <table class="table is-bordered">
+    <thead style="background-color: darkgray">
+    <tr>
+      <th>ID</th>
+      <th>Naziv predmeta</th>
+      <th>Opis</th>
+      <th>Broj ESPB</th>
+      <th>Oblik nastave</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--    <tr *ngFor="let subject of subjects">-->
+    <tr>
+      <!--      <th>{{quote.id}}</th>-->
+      <!--      <td> {{quote.text}}</td>-->
+      <!--      <td>{{quote.author}}</td>-->
+
+      <th>1</th>
+      <td>test</td>
+      <td>test123</td>
+
+
+      <td>Lorem ipsum</td>
+      <td>Lorem Ipsum</td>
+      <!--      Treba da se prosledi argument metodi.-->
+      <td><input type="button" value="Izmeni" (click)="editSubject()"/></td>
+      <td><input type="button" value="Obrisi"/></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
