@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit,OnDestroy{
   public korisnik:IKorisnik | null = null;
   public loginForm: FormGroup
   subs: Subscription | null = null;
-  @Output() 
+  @Output()
   output: EventEmitter<IKorisnik> =   new EventEmitter();
   constructor(private router: Router,private servis: LoginService) {
     this.loginForm = new FormGroup({
@@ -47,6 +47,6 @@ export class LoginComponent implements OnInit,OnDestroy{
       }
 
     })
-    
+
   }
 }

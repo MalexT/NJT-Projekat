@@ -1,9 +1,9 @@
-import { NastavnoOsoblje } from "./nastavnoOsoblje";
-import { IRola } from "./rola";
+import {NastavnoOsoblje} from './nastavnoOsoblje';
+import {IRola} from './rola';
 
 export interface IKorisnik {
-    id: Number,
-    username:String,
-    rola:IRola,
-    nastavnoOsoblje:NastavnoOsoblje
+  id: number;
+  username: string;
+  rola: IRola;
+  nastavnoOsoblje: NastavnoOsoblje;
 }

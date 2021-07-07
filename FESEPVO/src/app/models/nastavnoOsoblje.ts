@@ -1,5 +1,5 @@
 export interface NastavnoOsoblje {
-    id:number,
-    ime:String,
-    prezime: String
+  id: number;
+  ime: string;
+  prezime: string;
 }
