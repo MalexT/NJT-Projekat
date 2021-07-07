@@ -32,12 +32,8 @@ public class PredmetController {
 
     @DeleteMapping(path="/{id}")
     public ResponseEntity<Object> deleteById(@PathVariable int id) {
-        try {
             predmetService.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("Predmet sa id " +  id + " je izbrisan!");
-        } catch (EmptyResultDataAccessException e) {
-            throw new MyEntityDoesntExist("Ne postoji predmet sa datim id!");
-        }
 
     }
 

@@ -40,9 +40,9 @@ INSERT INTO nastavno_osoblje (ID,zvanje_id,ime,prezime,jmbg) VALUES (1, 1, 'Pera
 INSERT INTO nastavno_osoblje (ID,zvanje_id,ime,prezime,jmbg) VALUES (2, 2, 'Zika','Zikic','1601999721816');
 INSERT INTO nastavno_osoblje (ID,zvanje_id,ime,prezime,jmbg) VALUES (3, 3, 'Pera','Peric','1601999721817');
 
-INSERT INTO predmet (ID, naziv, ESPB, Opis) VALUES (1,'Programiranje 1', 4, 'Koncepti programiranja u C programskom jeziku...');
-INSERT INTO predmet (ID, naziv, ESPB, Opis) VALUES (2,'Programiranje 2', 6, 'Koncepti programiranja u Java programskom jeziku...');
-INSERT INTO predmet (ID, naziv, ESPB, Opis) VALUES (3,'NJT', 6, 'Napredne Java tehnologije (Spring, Maven, Hibernate...)');
+INSERT INTO predmet (ID, naziv, ESPB, Opis,aktivan) VALUES (1,'Programiranje 1', 4, 'Koncepti programiranja u C programskom jeziku...',true);
+INSERT INTO predmet (ID, naziv, ESPB, Opis,aktivan) VALUES (2,'Programiranje 2', 6, 'Koncepti programiranja u Java programskom jeziku...',true);
+INSERT INTO predmet (ID, naziv, ESPB, Opis,aktivan) VALUES (3,'NJT', 6, 'Napredne Java tehnologije (Spring, Maven, Hibernate...)',true);
 
 INSERT INTO angazovanje(oblik_nastave_id, predmet_id, nastavno_osoblje_id) VALUES (1,1,1);
 INSERT INTO angazovanje (oblik_nastave_id, predmet_id, nastavno_osoblje_id) VALUES (2,1,2);
