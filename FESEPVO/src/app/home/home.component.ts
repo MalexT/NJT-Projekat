@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
+import {IKorisnik} from '../models/korisnik';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,11 @@ import {Subscription} from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  korisnik: IKorisnik | null = null;
+
+  constructor() {
+  }
 
   time = new Date();
   intervalId: any;
