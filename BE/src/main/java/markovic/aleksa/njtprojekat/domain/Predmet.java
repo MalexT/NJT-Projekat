@@ -17,6 +17,7 @@ public class Predmet {
     private String naziv;
     private String opis;
     private int espb;
+    private boolean status;
 
     //vise ka vise sa oblikom nastave
     @ManyToMany

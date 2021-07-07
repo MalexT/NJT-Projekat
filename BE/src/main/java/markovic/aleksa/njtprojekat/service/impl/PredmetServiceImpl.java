@@ -31,6 +31,7 @@ public class PredmetServiceImpl implements PredmetService {
 
     @Override
     public void deleteById(int id) {
+        Optional<Predmet> predmet = predmetRepository.findById(id);
         predmetRepository.deleteById(id);
     }
 
@@ -51,7 +52,6 @@ public class PredmetServiceImpl implements PredmetService {
         if(predmet.isPresent()){
             Predmet newPredmet = predmetRepository.save(predmetMapper.predmetDtoToPredmet(predmetDto));
             return predmetMapper.predmetToPredmetDto(newPredmet);
-
         }
         else {
             throw new MyEntityDoesntExist("Ne postoji predmet sa datim id");

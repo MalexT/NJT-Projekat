@@ -1,19 +1,21 @@
 <app-header></app-header>
 <!--<app-subject></app-subject> -->
-<section class="main-content columns is-fullheight" >
-<app-side-nav></app-side-nav>
-<div class="container column is-10">
-  <div class="section">
-    <app-login (output)="ulogovanKorisnik($event)" *ngIf="korisnik==null;else ulogovan"></app-login>
-    <ng-template #ulogovan>
-      <router-outlet></router-outlet>
-    </ng-template>
-    
+<section class="main-content columns is-fullheight">
+  <div *ngIf="korisnik!=null">
+    <app-side-nav></app-side-nav>
   </div>
-</div>
+  <div class="container column is-10">
+    <div class="section">
+      <app-login (output)="ulogovanKorisnik($event)" *ngIf="korisnik==null;else ulogovan"></app-login>
+      <ng-template #ulogovan>
+        <router-outlet></router-outlet>
+      </ng-template>
+
+    </div>
+  </div>
 </section>
-<footer  style="margin-top: 13%; " >
-  <div class="content has-text-centered" >
+<footer style="margin-top: 13%; ">
+  <div class="content has-text-centered">
     <p>
       <strong>SEPVO</strong> by <a href="https://github.com/MalexT/">Aleksa Markovic</a>.
     </p>

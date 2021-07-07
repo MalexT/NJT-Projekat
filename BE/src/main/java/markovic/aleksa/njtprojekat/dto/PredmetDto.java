@@ -13,6 +13,7 @@ public class PredmetDto {
     private String naziv;
     private String opis;
     private int espb;
+    private boolean status;
     private List<OblikNastaveDto> obliciNastave;
 
 }
