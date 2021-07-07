@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +18,7 @@ import { AngazovanjeComponent } from './angazovanje/angazovanje.component';
 import { AngazovanjeAEComponent } from './angazovanje-ae/angazovanje-ae.component';
 import { AngazovanjeFormComponent } from './angazovanje-form/angazovanje-form.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,13 +31,16 @@ import { AngazovanjeFormComponent } from './angazovanje-form/angazovanje-form.co
     SubjectAEComponent,
     AngazovanjeComponent,
     AngazovanjeAEComponent,
-    AngazovanjeFormComponent
+    AngazovanjeFormComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

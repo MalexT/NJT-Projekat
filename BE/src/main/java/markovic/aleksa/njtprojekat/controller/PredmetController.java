@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/predmet")
+@CrossOrigin("*")
 public class PredmetController {
 
     private PredmetService predmetService;

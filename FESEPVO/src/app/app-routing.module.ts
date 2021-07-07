@@ -9,6 +9,7 @@ import {AngazovanjeAEComponent} from './angazovanje-ae/angazovanje-ae.component'
 import {AngazovanjeComponent} from './angazovanje/angazovanje.component';
 import {AngazovanjeFormComponent} from './angazovanje-form/angazovanje-form.component';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {
@@ -31,8 +32,7 @@ const routes: Routes = [
       {path: 'new', component: AngazovanjeFormComponent},
       {path: ':id/edit', component: AngazovanjeFormComponent},
     ]
-  },
-  {path: '**', redirectTo: '/'},
+  }
 ];
 
 
@@ -42,5 +42,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 
-
 }
+export const routingComponents = [HomeComponent,SubjectComponent,SubjectAEComponent,AngazovanjeComponent,LoginComponent,AngazovanjeAEComponent,SubjectFormComponent,AngazovanjeFormComponent]
