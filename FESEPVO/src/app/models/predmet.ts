@@ -6,7 +6,6 @@ export interface IPredmet {
   naziv: string;
   opis: string;
   espb: number;
-  status: boolean; // Ovo treba dodati u BE
-  nastavnoOsoblje: NastavnoOsoblje;
-  oblikNastave: IOblikNastave;
+  aktivan: boolean; // Ovo treba dodati u BE
+  obliciNastave: IOblikNastave[];
 }
