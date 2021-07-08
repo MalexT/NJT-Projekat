@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IKorisnik} from './models/korisnik';
+import { KorisnikService } from './servisi/korisnik.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,13 @@ export class AppComponent {
   public korisnik: IKorisnik | null = null;
   title = 'FESEPVO';
 
-  constructor() {
+  constructor(private korisnikS:KorisnikService) {
+  
   }
+  
 
-  ulogovanKorisnik(korisnik: IKorisnik) {
-    this.korisnik = korisnik;
-    console.log(this.korisnik);
-  }
+ public getKorisnik() {
+   this.korisnik = this.korisnikS.getKorisnik();
+   return this.korisnik;
+ }
 }

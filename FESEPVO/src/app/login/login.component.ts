@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IKorisnik } from '../models/korisnik';
+import { KorisnikService } from '../servisi/korisnik.service';
 import { LoginService } from '../servisi/login.service';
 
 @Component({
@@ -12,12 +13,11 @@ import { LoginService } from '../servisi/login.service';
 })
 export class LoginComponent implements OnInit,OnDestroy{
 
-  public korisnik:IKorisnik | null = null;
   public loginForm: FormGroup
   subs: Subscription | null = null;
   @Output()
   output: EventEmitter<IKorisnik> =   new EventEmitter();
-  constructor(private router: Router,private servis: LoginService) {
+  constructor(private router: Router,private servis: LoginService,private korisnikS:KorisnikService) {
     this.loginForm = new FormGroup({
       username: new FormControl("",[Validators.required]),
       password: new FormControl("",[Validators.required])
@@ -41,8 +41,7 @@ export class LoginComponent implements OnInit,OnDestroy{
         window.alert(response)
       }
       else{
-        this.korisnik = response;
-        this.output.emit(this.korisnik);
+        this.korisnikS.saveKorisnik(response);
         this.router.navigateByUrl('');
       }
 

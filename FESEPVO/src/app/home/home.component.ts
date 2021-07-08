@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {IKorisnik} from '../models/korisnik';
+import { KorisnikService } from '../servisi/korisnik.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,11 @@ import {IKorisnik} from '../models/korisnik';
 })
 export class HomeComponent implements OnInit {
 
-  @Input()
+
   korisnik: IKorisnik | null = null;
 
-  constructor() {
+  constructor(private korisnikS:KorisnikService) {
+    this.korisnik = korisnikS.getKorisnik();
   }
 
   time = new Date();
@@ -24,6 +26,7 @@ export class HomeComponent implements OnInit {
     this.intervalId = setInterval(() => {
       this.time = new Date();
     }, 1000);
+    console.log(this.korisnik)
   }
 
   ngOnDestroy() {
@@ -31,5 +34,9 @@ export class HomeComponent implements OnInit {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  public getKorisnik(){
+    return this.korisnikS.getKorisnik();
   }
 }
