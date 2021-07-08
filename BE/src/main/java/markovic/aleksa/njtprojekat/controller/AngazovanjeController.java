@@ -27,7 +27,7 @@ public class AngazovanjeController {
         return angazovanjeService.getAll();
     }
 
-    @DeleteMapping
+    @PostMapping("/delete")
     public ResponseEntity<Object> deleteById(@RequestBody AngazovanjePK angazovanjePK) {
         System.out.println(angazovanjePK);
         angazovanjeService.deleteById(angazovanjePK);

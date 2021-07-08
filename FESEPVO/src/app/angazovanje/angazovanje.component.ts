@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { Subscription } from 'rxjs';
+import { IAngazovanja } from '../models/angazovanja';
+import { AngazovanjaService } from '../servisi/angazovanja.service';
 
 @Component({
   selector: 'app-angazovanje',
@@ -8,7 +11,12 @@ import {Router} from '@angular/router';
 })
 export class AngazovanjeComponent implements OnInit {
 
-  constructor(private router: Router) {
+  public angazovanja: IAngazovanja[] = []
+  constructor(private router: Router,private angazovanjeS:AngazovanjaService ){
+    angazovanjeS.getAll().subscribe(angazovanje =>{
+      this.angazovanja = angazovanje;
+    })
+
   }
 
   ngOnInit(): void {
@@ -21,7 +29,13 @@ export class AngazovanjeComponent implements OnInit {
     // {queryParams:{naizv:subject.naziv, opis: subject.opis}, brojESPB: subject.ESPB});
   }
 
-  deleteAngazovanje() {
-    console.log('Angazovanje obrisano.');
+  deleteAngazovanje(osobljeId:number,predmetId:number) {
+    this.angazovanjeS.deleteAngazovanje(osobljeId,predmetId).subscribe(message =>{
+      window.alert(message);
+      this.angazovanjeS.getAll().subscribe(angazovanje =>{
+        this.angazovanja = angazovanje;
+      })
+
+    })
   }
 }

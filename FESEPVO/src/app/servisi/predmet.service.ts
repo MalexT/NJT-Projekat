@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IOblikNastave } from '../models/oblikNastave';
 import { IPredmet } from '../models/predmet';
 
 @Injectable({
@@ -12,5 +13,13 @@ export class PredmetService {
 
   public getAll(): Observable<IPredmet[]> {
     return this.http.get<IPredmet[]>('http://localhost:8080/predmet');
+  }
+
+  public deleteSubject(id:number){
+    return this.http.delete('http://localhost:8080/predmet/'+id,{responseType: 'text'});
+  }
+
+  public addSubject(id:number,naziv:string,opis:string,espb:number,obliciNastave:IOblikNastave[]):Observable<IPredmet>{
+    return this.http.post<IPredmet>('http://localhost:8080/predmet',{id,naziv,opis,espb,obliciNastave});
   }
 }

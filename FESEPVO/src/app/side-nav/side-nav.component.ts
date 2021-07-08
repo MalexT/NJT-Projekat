@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { KorisnikService } from '../servisi/korisnik.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private korisnikS:KorisnikService,private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  public odjava(){
+    this.korisnikS.saveKorisnik(null);
+    console.log(this.korisnikS.getKorisnik())
+    this.router.navigateByUrl('/');
+    
   }
 
 }

@@ -35,4 +35,16 @@ export class SubjectComponent implements OnInit,OnDestroy {
     this.router.navigate(['subjectAE', subject, 'edit']);
     // {queryParams:{naizv:subject.naziv, opis: subject.opis}, brojESPB: subject.ESPB});
   }
+
+  deleteSubject(id:number){
+    this.predmetServis.deleteSubject(id).subscribe(message =>{
+      window.alert(message);
+      this.predmetServis.getAll().subscribe(predmeti =>{
+        this.predmeti = predmeti;
+      })
+
+    })
+
+  }
+
 }

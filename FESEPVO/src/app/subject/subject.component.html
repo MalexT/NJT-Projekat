@@ -14,8 +14,8 @@
       <th></th>
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let predmet of predmeti">
+    <tbody *ngFor="let predmet of predmeti">
+    <tr *ngIf="predmet.aktivan">
     
       <td>{{predmet.id}}</td>
       <td> {{predmet.naziv}}</td>
@@ -28,7 +28,7 @@
     </td>
       <!--      Treba da se prosledi argument metodi.-->
       <td><input type="button" value="Izmeni" (click)="editSubject()"/></td>
-      <td><input type="button" value="Obrisi"/></td>
+      <td><input type="button" value="Obrisi" (click)="deleteSubject(predmet.id)"/></td>
     </tr>
     </tbody>
   </table>

@@ -10,7 +10,7 @@ export class KorisnikService {
 
   constructor() { }
 
-  public saveKorisnik(korisnik:IKorisnik){
+  public saveKorisnik(korisnik:IKorisnik | null){
     this.korisnik = korisnik;
   }
   public getKorisnik():IKorisnik | null{
