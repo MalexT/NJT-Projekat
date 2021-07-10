@@ -4,6 +4,7 @@ import markovic.aleksa.njtprojekat.domain.Predmet;
 import markovic.aleksa.njtprojekat.dto.PredmetDto;
 import markovic.aleksa.njtprojekat.exceptions.MyEntityAlreadyExist;
 import markovic.aleksa.njtprojekat.exceptions.MyEntityDoesntExist;
+import markovic.aleksa.njtprojekat.mapper.OblikNastaveMapper;
 import markovic.aleksa.njtprojekat.mapper.PredmetMapper;
 import markovic.aleksa.njtprojekat.repositories.PredmetRepository;
 import markovic.aleksa.njtprojekat.service.PredmetService;
@@ -18,9 +19,11 @@ public class PredmetServiceImpl implements PredmetService {
     private PredmetRepository predmetRepository;
     private PredmetMapper predmetMapper;
 
-    public PredmetServiceImpl(PredmetRepository predmetRepository,PredmetMapper predmetMapper) {
+    private OblikNastaveMapper oblikNastaveMapper;
+    public PredmetServiceImpl(PredmetRepository predmetRepository,PredmetMapper predmetMapper,OblikNastaveMapper oblikNastaveMapper) {
         this.predmetRepository = predmetRepository;
         this.predmetMapper = predmetMapper;
+        this.oblikNastaveMapper = oblikNastaveMapper;
     }
 
     @Override
@@ -43,14 +46,15 @@ public class PredmetServiceImpl implements PredmetService {
 
     @Override
     public PredmetDto save(PredmetDto predmetDto) {
-        Optional<Predmet> predmet = predmetRepository.findById(predmetDto.getId());
-        if(!predmet.isPresent()){
-            predmetRepository.save(predmetMapper.predmetDtoToPredmet(predmetDto));
-            return predmetDto;
-        }
-        else {
-            throw new MyEntityAlreadyExist("Predmet sa datim id vec postoji");
-        }
+        Predmet newPredmet = new Predmet();
+        newPredmet.setAktivan(predmetDto.isAktivan());
+        newPredmet.setEspb(predmetDto.getEspb());
+        newPredmet.setOpis(predmetDto.getOpis());
+        newPredmet.setObliciNastave(predmetDto.getObliciNastave().stream().map(oblikNastaveDto -> oblikNastaveMapper.dtoToOblikNastave(oblikNastaveDto)).collect(Collectors.toList()));
+        newPredmet.setNaziv(predmetDto.getNaziv());
+        predmetRepository.save(newPredmet);
+        System.out.println(newPredmet.getId());
+        return predmetMapper.predmetToPredmetDto(newPredmet);
     }
     @Override
     public PredmetDto update(PredmetDto predmetDto) {

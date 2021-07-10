@@ -53,7 +53,7 @@ public class AngazovanjeServiceImpl implements AngazovanjeService {
     public AngazovanjeResponseDto save(AngazovanjeDto angazovanjeDto) {
         Optional<Angazovanje> angazovanje = angazovanjeRepository.findById(new AngazovanjePK(angazovanjeDto.getPredmet_id(),angazovanjeDto.getNastavno_osoblje_id()));
         if(!angazovanje.isPresent()){
-            Angazovanje angazovanje1 = angazovanje.get();
+            Angazovanje angazovanje1 = new Angazovanje();
             angazovanje1.setPredmet(predmetRepository.getById((angazovanjeDto.getPredmet_id())));
             angazovanje1.setOblikNastave(angazovanjeDto.getOblikNastave());
             angazovanje1.setNastavnoOsoblje(nastavnoOsobljeRepository.getById(angazovanjeDto.getNastavno_osoblje_id()));
@@ -64,5 +64,21 @@ public class AngazovanjeServiceImpl implements AngazovanjeService {
             throw new MyEntityAlreadyExist("Angazovanje za dati predmet vec postoji");
         }
     }
-    
+
+    @Override
+    public AngazovanjeResponseDto update(AngazovanjeDto angazovanjeDto) {
+        Optional<Angazovanje> angazovanje = angazovanjeRepository.findById(new AngazovanjePK(angazovanjeDto.getPredmet_id(),angazovanjeDto.getNastavno_osoblje_id()));
+        if(angazovanje.isPresent()){
+            Angazovanje angazovanje1 = angazovanje.get();
+            angazovanje1.setPredmet(predmetRepository.getById((angazovanjeDto.getPredmet_id())));
+            angazovanje1.setOblikNastave(angazovanjeDto.getOblikNastave());
+            angazovanje1.setNastavnoOsoblje(nastavnoOsobljeRepository.getById(angazovanjeDto.getNastavno_osoblje_id()));
+            angazovanjeRepository.save(angazovanje1);
+            return angazovanjeMapper.angozavanjeToAngazovanjeDto(angazovanje1);
+        }
+        else {
+            throw new MyEntityAlreadyExist("Angazovanje za dati predmet ne postoji");
+        }
+    }
+
 }
