@@ -2,10 +2,12 @@ package markovic.aleksa.njtprojekat.service.impl;
 
 import markovic.aleksa.njtprojekat.domain.Angazovanje;
 import markovic.aleksa.njtprojekat.domain.AngazovanjePK;
+import markovic.aleksa.njtprojekat.domain.OblikNastave;
 import markovic.aleksa.njtprojekat.dto.AngazovanjeDto;
 import markovic.aleksa.njtprojekat.dto.AngazovanjeResponseDto;
 import markovic.aleksa.njtprojekat.exceptions.MyEntityAlreadyExist;
 import markovic.aleksa.njtprojekat.mapper.AngazovanjeMapper;
+import markovic.aleksa.njtprojekat.mapper.OblikNastaveMapper;
 import markovic.aleksa.njtprojekat.mapper.OsobljeMapper;
 import markovic.aleksa.njtprojekat.mapper.PredmetMapper;
 import markovic.aleksa.njtprojekat.repositories.AngazovanjeRepository;
@@ -27,12 +29,14 @@ public class AngazovanjeServiceImpl implements AngazovanjeService {
     AngazovanjeMapper angazovanjeMapper;
     OsobljeMapper osobljeMapper;
     PredmetMapper predmetMapper;
+    OblikNastaveMapper oblikNastaveMapper;
 
-    public AngazovanjeServiceImpl(AngazovanjeRepository angazovanjeRepository, PredmetRepository predmetRepository, NastavnoOsobljeRepository nastavnoOsobljeRepository, AngazovanjeMapper angazovanjeMapper, OsobljeMapper osobljeMapper, PredmetMapper predmetMapper) {
+    public AngazovanjeServiceImpl(AngazovanjeRepository angazovanjeRepository, PredmetRepository predmetRepository, NastavnoOsobljeRepository nastavnoOsobljeRepository, AngazovanjeMapper angazovanjeMapper, OsobljeMapper osobljeMapper, PredmetMapper predmetMapper, OblikNastaveMapper oblikNastaveMapper) {
         this.angazovanjeRepository = angazovanjeRepository;
         this.predmetRepository = predmetRepository;
         this.nastavnoOsobljeRepository = nastavnoOsobljeRepository;
         this.angazovanjeMapper = angazovanjeMapper;
+        this.oblikNastaveMapper = oblikNastaveMapper;
         this.osobljeMapper = osobljeMapper;
         this.predmetMapper = predmetMapper;
     }
@@ -51,11 +55,13 @@ public class AngazovanjeServiceImpl implements AngazovanjeService {
 
     @Override
     public AngazovanjeResponseDto save(AngazovanjeDto angazovanjeDto) {
+        System.out.println(angazovanjeDto.getPredmet_id());
+        System.out.println(angazovanjeDto.getNastavno_osoblje_id());
         Optional<Angazovanje> angazovanje = angazovanjeRepository.findById(new AngazovanjePK(angazovanjeDto.getPredmet_id(),angazovanjeDto.getNastavno_osoblje_id()));
         if(!angazovanje.isPresent()){
             Angazovanje angazovanje1 = new Angazovanje();
             angazovanje1.setPredmet(predmetRepository.getById((angazovanjeDto.getPredmet_id())));
-            angazovanje1.setOblikNastave(angazovanjeDto.getOblikNastave());
+            angazovanje1.setOblikNastave(oblikNastaveMapper.dtoToOblikNastave(angazovanjeDto.getOblikNastave()));
             angazovanje1.setNastavnoOsoblje(nastavnoOsobljeRepository.getById(angazovanjeDto.getNastavno_osoblje_id()));
             angazovanjeRepository.save(angazovanje1);
             return angazovanjeMapper.angozavanjeToAngazovanjeDto(angazovanje1);
@@ -71,7 +77,7 @@ public class AngazovanjeServiceImpl implements AngazovanjeService {
         if(angazovanje.isPresent()){
             Angazovanje angazovanje1 = angazovanje.get();
             angazovanje1.setPredmet(predmetRepository.getById((angazovanjeDto.getPredmet_id())));
-            angazovanje1.setOblikNastave(angazovanjeDto.getOblikNastave());
+            angazovanje1.setOblikNastave(oblikNastaveMapper.dtoToOblikNastave(angazovanjeDto.getOblikNastave()));
             angazovanje1.setNastavnoOsoblje(nastavnoOsobljeRepository.getById(angazovanjeDto.getNastavno_osoblje_id()));
             angazovanjeRepository.save(angazovanje1);
             return angazovanjeMapper.angozavanjeToAngazovanjeDto(angazovanje1);

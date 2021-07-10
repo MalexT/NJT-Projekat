@@ -36,8 +36,13 @@ public class AngazovanjeController {
     }
 
     @PostMapping
-    public ResponseEntity addNewPredmet(@RequestBody AngazovanjeDto angazovanjeDto){
+    public ResponseEntity addNewAngazovanje(@RequestBody AngazovanjeDto angazovanjeDto){
         return ResponseEntity.status(201).body(angazovanjeService.save(angazovanjeDto));
+    }
+
+    @PutMapping
+    public ResponseEntity updateAngazovanje(@RequestBody AngazovanjeDto angazovanjeDto){
+        return ResponseEntity.status(201).body(angazovanjeService.update(angazovanjeDto));
     }
 
 }

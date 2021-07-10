@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Angazovanje {
     @EmbeddedId
-    private AngazovanjePK angazovanjePK;
+    private AngazovanjePK angazovanjePK = new AngazovanjePK();
 
     @ManyToOne
     @MapsId("predmet_id")
