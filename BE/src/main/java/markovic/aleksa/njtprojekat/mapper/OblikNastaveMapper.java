@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface OblikNastaveMapper {
     OblikNastaveDto oblikNastaveToDto(OblikNastave oblikNastaveDto);
-    OblikNastave dtoToOblikNastave(OblikNastave oblikNastave);
+    OblikNastave dtoToOblikNastave(OblikNastaveDto oblikNastave);
 }
