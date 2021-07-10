@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IKorisnik } from '../models/korisnik';
 import { KorisnikService } from '../servisi/korisnik.service';
 
 @Component({
@@ -9,16 +10,19 @@ import { KorisnikService } from '../servisi/korisnik.service';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor(private korisnikS:KorisnikService,private router: Router) { }
+  constructor(private korisnikS: KorisnikService, private router: Router, private korisnikServis: KorisnikService) { }
+
+  korisnik: IKorisnik | null = null;
 
   ngOnInit(): void {
+    this.korisnik = this.korisnikServis.getKorisnik()
   }
 
-  public odjava(){
+  public odjava() {
     this.korisnikS.saveKorisnik(null);
     console.log(this.korisnikS.getKorisnik())
     this.router.navigateByUrl('/');
-    
+
   }
 
 }

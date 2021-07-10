@@ -2,49 +2,54 @@
   <div class="column">
     <div class="box" style="margin-top: 25px">
       <p class="title">{{getTitle()}}</p>
-      <div class="fields">
-        <div class="control">
 
-          <div class="columns">
-            <div class="column">
-              <div class="select">
-                <!--                  Predemete za ovaj select napuniti iz baze-->
-                <select>
-                  <option>Programiranje 1</option>
-                  <option>Programiranje 2</option>
-                  <option>Programiranje 3</option>
-                </select>
-
-              </div>
-            </div>
-            <div class="column">
-              <button class="button is-link"> Izaberi predmet </button>
-            </div>
-          </div>
-
-          <!--            Ovde mozda da ide ngFor za listanje izabranih oblika nastave za izabrani predmet -->
-          <div class="columns">
-            <div class="column">
-              Oblik nastave
-            </div>
-            <div class="column">
-              <div class="select">
-                <!--                  Profesore za ovaj select da puni iz baze-->
-                <select>
-                  <option>Pera Peric</option>
-                  <option>Zika Zikic</option>
-                  <option>Mika Mikic</option>
-                </select>
-
+      <form [formGroup]="angazovanjeForm" (ngSubmit)="go()">
+        <div>
+          <div class="field">
+            <div class="control">
+              <div class="columns">
+                <div class="column">
+                  <label class="label">Predmet</label>
+                  <div class="select">
+                    <select (change)="UcitajOblikeNastave(t.value, t.options)" #t formControlName="predmet">
+                      <option *ngFor="let predmet of predmeti" value="{{predmet.id}}">{{predmet.naziv}}</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <button class="button is-link" style="margin-top: 25px;">
-        Snimi
-      </button>
+
+
+        <div class="field">
+          <div class="columns" *ngIf="obliciNastave.length>0">
+            <div class="column">
+              <label class="label">Oblik nastave</label>
+              <div class="select">
+                <!--                  Predemete za ovaj select napuniti iz baze-->
+                <select formControlName="oblikNastave" (change)=onChange($event) >
+                  <option *ngFor="let oblik of obliciNastave" value="{{oblik.id}}">{{oblik.naziv}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="column">
+              <label class="label">Nastavno osoblje</label>
+              <div class="select" >
+                <!--                  Profesore za ovaj select da puni iz baze-->
+                <select formControlName="nastavnoOsoblje"> 
+                  <option *ngFor="let osoba of nastavnoOsoblje" value="{{osoba.id}}">{{osoba.ime}} {{osoba.prezime}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="button is-block is-large" style="color: white;">Snimi <i class="fa fa-save"
+            aria-hidden="true"></i></button>
+      </form>
     </div>
   </div>
 </div>

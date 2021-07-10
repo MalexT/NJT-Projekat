@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IAngazovanja } from '../models/angazovanja';
+import { IKorisnik } from '../models/korisnik';
 import { AngazovanjaService } from '../servisi/angazovanja.service';
+import { KorisnikService } from '../servisi/korisnik.service';
 
 @Component({
   selector: 'app-angazovanje',
@@ -12,7 +14,9 @@ import { AngazovanjaService } from '../servisi/angazovanja.service';
 export class AngazovanjeComponent implements OnInit {
 
   public angazovanja: IAngazovanja[] = []
-  constructor(private router: Router,private angazovanjeS:AngazovanjaService ){
+  korisnik: IKorisnik | null = null;
+
+  constructor(private router: Router,private angazovanjeS:AngazovanjaService,private korisnikServis: KorisnikService ){
     angazovanjeS.getAll().subscribe(angazovanje =>{
       this.angazovanja = angazovanje;
     })
@@ -20,13 +24,13 @@ export class AngazovanjeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.korisnik = this.korisnikServis.getKorisnik()
   }
 
-  editAngazovanje() {
-    console.log('Angazovanje Izmenjeno.');
-    var angazovanje = 1;
-    this.router.navigate(['angazovanjeAE', angazovanje, 'edit']);
-    // {queryParams:{naizv:subject.naziv, opis: subject.opis}, brojESPB: subject.ESPB});
+  editAngazovanje(angazovanje: IAngazovanja) {
+
+    this.router.navigate(['angazovanjeAE', angazovanje.predmetDto.id, 'edit'],
+     {queryParams:{predmetId: angazovanje.predmetDto.id, nastavnoOsobljeId: angazovanje.osobljeDto.id, oblikNastave: angazovanje.oblikNastave.id}});
   }
 
   deleteAngazovanje(osobljeId:number,predmetId:number) {

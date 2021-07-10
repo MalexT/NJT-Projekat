@@ -2,47 +2,47 @@
   <div class="column">
     <div class="box" style="margin-top: 25px">
       <p class="title">{{getTitle()}}</p>
-      <div class="fields">
-        <label class="label">Naziv</label>
-        <div class="control">
-          <input class="input" type="text">
-        </div>
-      </div>
 
-      <div class="fields">
-        <label class="label">Opis</label>
-        <div class="control">
-          <textarea class="textarea"
-                    placeholder="npr. Nakon slusanja ovog predmeta student ce biti u mogucnosti da..."></textarea>
-        </div>
-      </div>
-
-      <div class="fields">
-        <label class="label">Broj ESPB</label>
-        <div class="control">
-          <input class="input" type="text">
-        </div>
-      </div>
-
-      <div class="box" style="margin-top: 25px">
-        <div class="fields">
-          <label class="label">Oblik nastave</label>
+      <form [formGroup]="subjectForm" (ngSubmit)="go()" >
+        <div class="field">
+          <label class="label">Naziv</label>
           <div class="control">
-            <!--            Ovde mozda da ide ngFor za listanje Oblika nastave za ove checkbox-ova-->
-            <label class="checkbox">
-              <input id="1" type="checkbox" (change)="checkValue()"/>
-              <!--              Ovde treba da ide tekst iz baze-->
-              Predavanja
-            </label> &nbsp;
+            <input class="input" type="text" placeholder="Programiranje 1..." autofocus="" formControlName="naziv">
           </div>
         </div>
 
-      </div>
+        <div class="field">
+          <label class="label">Opis</label>
+          <div class="control">
+            <textarea class="textarea" type="text" placeholder="Nakon slusanja ovog predmeta student ce biti u mogucnosti da..." formControlName="opis"></textarea>
+          </div>
+        </div>
+        
+        <div class="field">
+          <label class="label">Broj ESPB</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="6" min="2" max="27"  autofocus="" formControlName="espb">
+          </div>
+        </div>
+      
+        <!-- On bi trebao da dohvati sve oblike nastave iz baze a da chekira samo one koji su u predmetu... -->
+        <!-- Ovo bi trebalo da se doradi! -->
+        <div class="box" style="margin-top: 25px">
+          <div class="field">
+            <label class="label">Oblik nastave</label>
+            <div class="control">
+              <label class="checkbox" *ngFor="let oblik of obliciNastave">
+                <input id="{{oblik.id}}" #c type="checkbox" value="{{oblik.id}}" checked="true"/>
+                {{oblik.naziv}} &nbsp;
+              </label> &nbsp;
+            </div>
+          </div>
+  
+        </div>
 
 
-      <button class="button is-link">
-        Snimi
-      </button>
+      <button type="submit" class="button is-block is-large" style="color: white;">Snimi <i class="fa fa-save" aria-hidden="true"></i></button>
+    </form>
     </div>
   </div>
 </div>

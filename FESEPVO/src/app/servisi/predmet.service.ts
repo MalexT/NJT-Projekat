@@ -22,4 +22,8 @@ export class PredmetService {
   public addSubject(id:number,naziv:string,opis:string,espb:number,obliciNastave:IOblikNastave[]):Observable<IPredmet>{
     return this.http.post<IPredmet>('http://localhost:8080/predmet',{id,naziv,opis,espb,obliciNastave});
   }
+
+  public getById(id:number):Observable<IPredmet>{
+    return this.http.get<IPredmet>('http://localhost:8080/predmet/'+id);
+  }
 }
