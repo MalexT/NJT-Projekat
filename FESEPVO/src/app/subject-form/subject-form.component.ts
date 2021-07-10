@@ -65,11 +65,22 @@ export class SubjectFormComponent implements OnInit {
     return false;
   }
 
+<<<<<<< HEAD
 
   go() {
     if (!this.subjectForm.valid) {
       window.alert("Forma nije validna")
       return;
+=======
+  console.log(this.subjectForm.value.obliciNastave)
+
+  if (this.predmet) {
+    for (let i = 1; i <= this.predmet.obliciNastave.length; i++) {
+      if ((<HTMLInputElement>document.getElementById(i.toString())).checked) {
+        console.log('Cekiran je');
+        //Ovako nekako mozemo da uzmemo koji su checkbox-ovi cekirani.
+      }
+>>>>>>> c21503f6a79ff0a33e84bfbf48a90e1503c492b2
     }
     
 
