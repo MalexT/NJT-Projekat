@@ -40,7 +40,6 @@ export class AngazovanjeFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.router.url.includes('edit')) {
-      //getById radi normalno ako nema oblika nastave ali ako ima oblike nastave onda ne radi kako treba
       console.log(this.route.snapshot.params.id);
       this.subs = this.predmetServis.getAll().subscribe(predmeti => {
         for (let i = 0; i < predmeti.length; i++) {

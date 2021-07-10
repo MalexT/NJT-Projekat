@@ -39,7 +39,7 @@
               <div class="select" >
                 <!--                  Profesore za ovaj select da puni iz baze-->
                 <select formControlName="nastavnoOsoblje"> 
-                  <option *ngFor="let osoba of nastavnoOsoblje" value="{{osoba.id}}">{{osoba.ime}} {{osoba.prezime}}</option>
+                  <option *ngFor="let osoba of nastavnoOsoblje" value="{{osoba.id}}">{{osoba.ime}} {{osoba.prezime}} ({{osoba.zvanje.naziv}})</option>
                 </select>
               </div>
             </div>

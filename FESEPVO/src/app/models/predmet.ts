@@ -6,6 +6,6 @@ export interface IPredmet {
   naziv: string;
   opis: string;
   espb: number;
-  aktivan: boolean; // Ovo treba dodati u BE
+  aktivan: boolean;
   obliciNastave: IOblikNastave[];
 }

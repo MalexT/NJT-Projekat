@@ -38,7 +38,7 @@ INSERT INTO rola (ID,Naziv) VALUES (2, 'Korisnik');
 
 INSERT INTO nastavno_osoblje (ID,zvanje_id,ime,prezime,jmbg) VALUES (1, 1, 'Pera','Peric','1601999721815');
 INSERT INTO nastavno_osoblje (ID,zvanje_id,ime,prezime,jmbg) VALUES (2, 2, 'Zika','Zikic','1601999721816');
-INSERT INTO nastavno_osoblje (ID,zvanje_id,ime,prezime,jmbg) VALUES (3, 3, 'Pera','Peric','1601999721817');
+INSERT INTO nastavno_osoblje (ID,zvanje_id,ime,prezime,jmbg) VALUES (3, 3, 'Milos','Milic','1601999721817');
 
 INSERT INTO predmet (ID, naziv, ESPB, Opis,aktivan) VALUES (1,'Programiranje 1', 4, 'Koncepti programiranja u C programskom jeziku...',true);
 INSERT INTO predmet (ID, naziv, ESPB, Opis,aktivan) VALUES (2,'Programiranje 2', 6, 'Koncepti programiranja u Java programskom jeziku...',true);
