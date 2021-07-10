@@ -73,7 +73,7 @@ public class AngazovanjeServiceImpl implements AngazovanjeService {
 
     @Override
     public AngazovanjeResponseDto update(AngazovanjeDto angazovanjeDto) {
-        Optional<Angazovanje> angazovanje = angazovanjeRepository.findById(new AngazovanjePK(angazovanjeDto.getPredmet_id(),angazovanjeDto.getNastavno_osoblje_id()));
+        Optional<Angazovanje> angazovanje = angazovanjeRepository.findById(new AngazovanjePK(angazovanjeDto.getNastavno_osoblje_id(),angazovanjeDto.getPredmet_id()));
         if(angazovanje.isPresent()){
             Angazovanje angazovanje1 = angazovanje.get();
             angazovanje1.setPredmet(predmetRepository.getById((angazovanjeDto.getPredmet_id())));
