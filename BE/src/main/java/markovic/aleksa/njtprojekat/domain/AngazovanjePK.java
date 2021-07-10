@@ -2,12 +2,14 @@ package markovic.aleksa.njtprojekat.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 @NoArgsConstructor
 @Getter
+@Setter
 @Embeddable
 public class AngazovanjePK implements Serializable {
 

@@ -51,6 +51,8 @@ go() {
     return;
   }
 
+  console.log(this.subjectForm.value.obliciNastave)
+
   if (this.predmet) {
     for (let i = 1; i <= this.predmet.obliciNastave.length; i++) {
       if ((<HTMLInputElement>document.getElementById(i.toString())).checked) {

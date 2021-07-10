@@ -7,5 +7,5 @@ import markovic.aleksa.njtprojekat.domain.OblikNastave;
 public class AngazovanjeDto {
     private int nastavno_osoblje_id;
     private int predmet_id;
-    private OblikNastave oblikNastave;
+    private OblikNastaveDto oblikNastave;
 }
