@@ -3,7 +3,7 @@
     <div class="box" style="margin-top: 25px">
       <p class="title" >{{getTitle()}}</p>
 
-      <form [formGroup]="subjectForm" (ngSubmit)="go($event)">
+      <form [formGroup]="subjectForm" (ngSubmit)="go()" (change)="onCheckChange($event)">
         <div class="field">
           <label class="label">Naziv</label>
           <div class="control">
@@ -27,18 +27,10 @@
           </div>
         </div>
 
-        <!-- On bi trebao da dohvati sve oblike nastave iz baze a da chekira samo one koji su u predmetu... -->
-        <!-- Ovo bi trebalo da se doradi! -->
         <div class="box" style="margin-top: 25px">
           <div class="field">
             <label class="label">Oblik nastave</label>
             <div class="control">
-
-              <!-- <div class="field category" *ngFor="let oblikNastave of obliciNastaveFormArray.controls; let i = index;"
-                formArrayName="obliciNastave">
-                <label> {{obliciNastave[i]}}</label>&nbsp;
-                <input type="checkbox" formControlName="i">
-              </div> -->
 
               <div *ngFor="let oblik of obliciNastave">
                 <label class="checkbox">

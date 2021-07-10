@@ -66,12 +66,12 @@ export class SubjectFormComponent implements OnInit {
   }
 
 
-  go(event:any) {
+  go() {
     if (!this.subjectForm.valid) {
       window.alert("Forma nije validna")
       return;
     }
-    this.onCheckChange(event);
+    
 
     const formArray: FormArray = this.subjectForm.get('MyChoices') as FormArray;
 
