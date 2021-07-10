@@ -39,13 +39,8 @@ public class AngazovanjeController {
     public ResponseEntity addNewAngazovanje(@RequestBody AngazovanjeDto angazovanjeDto){
         return ResponseEntity.status(201).body(angazovanjeService.save(angazovanjeDto));
     }
-    @PutMapping
-    public ResponseEntity updateAngazovanje(@RequestBody AngazovanjeDto angazovanjeDto){
-        return ResponseEntity.status(201).body(angazovanjeService.update(angazovanjeDto));
-    }
 
-
-
+    
     @PutMapping
     public ResponseEntity updateAngazovanje(@RequestBody AngazovanjeDto angazovanjeDto){
         return ResponseEntity.status(201).body(angazovanjeService.update(angazovanjeDto));

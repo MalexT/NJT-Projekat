@@ -103,11 +103,12 @@ export class AngazovanjeFormComponent implements OnInit {
     console.log(this.angazovanjeForm.controls['oblikNastave'].value);
 
     if (this.router.url.includes('edit')) {
-      //  this.angazovanjeServis.update(this.angazovanjeForm.controls['nastavnoOsoblje'].value,this.angazovanjeForm.controls['predmet'].value, {"id": this.angazovanjeForm.controls['oblikNastave'].value, "naziv":this.naziv })
-      //  .subscribe(response=>{
-      //   window.alert(response.predmetDto.naziv)
-      // })
+      this.angazovanjeServis.update(this.angazovanjeForm.controls['nastavnoOsoblje'].value,this.angazovanjeForm.controls['predmet'].value, {"id": this.angazovanjeForm.controls['oblikNastave'].value, "naziv":this.naziv })
+      .subscribe(response=>{
+      window.alert(response.predmetDto.naziv)
       console.log('Izmena angazovanja.');
+      })
+      
     } else {
        this.angazovanjeServis.addAngazovanje(this.angazovanjeForm.controls['nastavnoOsoblje'].value,this.angazovanjeForm.controls['predmet'].value, {"id": this.angazovanjeForm.controls['oblikNastave'].value, "naziv":this.naziv })
        .subscribe(response=>{
