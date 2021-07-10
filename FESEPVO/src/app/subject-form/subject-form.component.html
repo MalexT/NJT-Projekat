@@ -3,7 +3,7 @@
     <div class="box" style="margin-top: 25px">
       <p class="title" >{{getTitle()}}</p>
 
-      <form [formGroup]="subjectForm" (ngSubmit)="go()" (change)="onCheckChange($event)">
+      <form [formGroup]="subjectForm" (ngSubmit)="go()">
         <div class="field">
           <label class="label">Naziv</label>
           <div class="control">
