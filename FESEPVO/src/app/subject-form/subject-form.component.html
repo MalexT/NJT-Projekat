@@ -1,9 +1,9 @@
 <div class="columns is-centered">
   <div class="column">
     <div class="box" style="margin-top: 25px">
-      <p class="title">{{getTitle()}}</p>
+      <p class="title" >{{getTitle()}}</p>
 
-      <form [formGroup]="subjectForm" (ngSubmit)="go()" >
+      <form [formGroup]="subjectForm" (ngSubmit)="go($event)">
         <div class="field">
           <label class="label">Naziv</label>
           <div class="control">
@@ -14,35 +14,47 @@
         <div class="field">
           <label class="label">Opis</label>
           <div class="control">
-            <textarea class="textarea" type="text" placeholder="Nakon slusanja ovog predmeta student ce biti u mogucnosti da..." formControlName="opis"></textarea>
+            <textarea class="textarea" type="text"
+              placeholder="Nakon slusanja ovog predmeta student ce biti u mogucnosti da..."
+              formControlName="opis"></textarea>
           </div>
         </div>
-        
+
         <div class="field">
           <label class="label">Broj ESPB</label>
           <div class="control">
-            <input class="input" type="number" placeholder="6" min="2" max="27"  autofocus="" formControlName="espb">
+            <input class="input" type="number" placeholder="6" min="2" max="27" autofocus="" formControlName="espb">
           </div>
         </div>
-      
+
         <!-- On bi trebao da dohvati sve oblike nastave iz baze a da chekira samo one koji su u predmetu... -->
         <!-- Ovo bi trebalo da se doradi! -->
         <div class="box" style="margin-top: 25px">
           <div class="field">
             <label class="label">Oblik nastave</label>
             <div class="control">
-              <label class="checkbox" *ngFor="let oblik of obliciNastave">
-                <input id="{{oblik.id}}" #c type="checkbox" value="{{oblik.id}}" checked="true"/>
-                {{oblik.naziv}} &nbsp;
-              </label> &nbsp;
+
+              <!-- <div class="field category" *ngFor="let oblikNastave of obliciNastaveFormArray.controls; let i = index;"
+                formArrayName="obliciNastave">
+                <label> {{obliciNastave[i]}}</label>&nbsp;
+                <input type="checkbox" formControlName="i">
+              </div> -->
+
+              <div *ngFor="let oblik of obliciNastave">
+                <label class="checkbox">
+                  <input [checked]="setChecked(oblik.id)" id="{{oblik.id}}" #c type="checkbox" [value]="oblik.id" (change)="onCheckChange($event)">
+                  {{oblik.naziv}} &nbsp;
+                </label> &nbsp;
+              </div>
             </div>
           </div>
-  
+
         </div>
 
 
-      <button type="submit" class="button is-block is-large" style="color: white;">Snimi <i class="fa fa-save" aria-hidden="true"></i></button>
-    </form>
+        <button type="submit" class="button is-block is-large" style="color: white;">Snimi <i class="fa fa-save"
+            aria-hidden="true"></i></button>
+      </form>
     </div>
   </div>
 </div>

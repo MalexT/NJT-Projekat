@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit,OnDestroy{
     }
     this.subs = this.servis.login(this.loginForm.value.username,this.loginForm.value.password)
     .subscribe((response:IKorisnik | String) =>{
-      if(response instanceof String || typeof response == 'string'){
+      if(response instanceof ProgressEvent){
+        window.alert('Ne moze se uspostaviti veza sa serverom.')
+      }
+      else if(response instanceof String || typeof response == 'string'){
         window.alert(response)
       }
       else{

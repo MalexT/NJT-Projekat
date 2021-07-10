@@ -14,9 +14,10 @@ export class LoginService {
     return this.http.post<IKorisnik | String>('http://localhost:8080/login',{username,password})
     .pipe(catchError((error:HttpErrorResponse)=> this.handleError(error)));
   }
-  private handleError(error: HttpErrorResponse): Observable<String> {
-    console.log(error);
+  private handleError(error: HttpErrorResponse): Observable<any> {
+    console.log(error); 
     const serverError:String = error.error;
+    console.log('server error '+serverError); 
     return of(serverError);
   }
 

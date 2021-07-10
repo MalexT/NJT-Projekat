@@ -21,25 +21,25 @@
           </div>
         </div>
 
-
-
         <div class="field">
           <div class="columns" *ngIf="obliciNastave.length>0">
-            <div class="column">
-              <label class="label">Oblik nastave</label>
-              <div class="select">
-                <!--                  Predemete za ovaj select napuniti iz baze-->
-                <select formControlName="oblikNastave" (change)=onChange($event) >
-                  <option *ngFor="let oblik of obliciNastave" value="{{oblik.id}}">{{oblik.naziv}}</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="column">
               <label class="label">Nastavno osoblje</label>
               <div class="select" >
                 <!--                  Profesore za ovaj select da puni iz baze-->
                 <select formControlName="nastavnoOsoblje"> 
                   <option *ngFor="let osoba of nastavnoOsoblje" value="{{osoba.id}}">{{osoba.ime}} {{osoba.prezime}} ({{osoba.zvanje.naziv}})</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="column">
+              <label class="label">Oblik nastave</label>
+              <div class="select">
+                <!--                  Predemete za ovaj select napuniti iz baze-->
+                <select formControlName="oblikNastave" (change)=onChange($event) >
+                  <option *ngFor="let oblik of obliciNastave" value="{{oblik.id}}">{{oblik.naziv}}</option>
                 </select>
               </div>
             </div>
