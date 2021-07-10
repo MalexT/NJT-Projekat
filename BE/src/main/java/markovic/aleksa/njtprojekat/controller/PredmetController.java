@@ -3,16 +3,13 @@ package markovic.aleksa.njtprojekat.controller;
 
 import markovic.aleksa.njtprojekat.domain.Predmet;
 import markovic.aleksa.njtprojekat.dto.PredmetDto;
-import markovic.aleksa.njtprojekat.exceptions.MyEntityAlreadyExist;
-import markovic.aleksa.njtprojekat.exceptions.MyEntityDoesntExist;
 import markovic.aleksa.njtprojekat.service.PredmetService;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/predmet")
@@ -34,8 +31,10 @@ public class PredmetController {
     public ResponseEntity<Object> deleteById(@PathVariable int id) {
             predmetService.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("Predmet sa id " +  id + " je izbrisan!");
-
     }
+
+    @GetMapping(path = "/{id}")
+    public PredmetDto getById(@PathVariable int id) { return predmetService.findById(id);}
 
     @PostMapping
     public ResponseEntity addNewPredmet(@RequestBody PredmetDto predmetDto){

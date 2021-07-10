@@ -4,6 +4,7 @@ import markovic.aleksa.njtprojekat.domain.Predmet;
 import markovic.aleksa.njtprojekat.dto.PredmetDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PredmetService {
 
@@ -11,4 +12,5 @@ public interface PredmetService {
     void deleteById(int id);
     PredmetDto save(PredmetDto predmetDto);
     PredmetDto update(PredmetDto predmetDto);
+    PredmetDto findById(int id);
 }

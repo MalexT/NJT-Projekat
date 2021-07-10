@@ -7,7 +7,6 @@ import markovic.aleksa.njtprojekat.exceptions.MyEntityDoesntExist;
 import markovic.aleksa.njtprojekat.mapper.PredmetMapper;
 import markovic.aleksa.njtprojekat.repositories.PredmetRepository;
 import markovic.aleksa.njtprojekat.service.PredmetService;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -64,5 +63,16 @@ public class PredmetServiceImpl implements PredmetService {
         else {
             throw new MyEntityDoesntExist("Ne postoji predmet sa datim id");
         }
+    }
+
+    @Override
+    public PredmetDto findById(int id) {
+        Optional<Predmet> predmet = predmetRepository.findById(id);
+        if(predmet.isPresent()){
+            return predmetMapper.predmetToPredmetDto(predmet.get());
+        }else {
+            throw new MyEntityDoesntExist("Ne postoji predmet sa datim id");
+        }
+
     }
 }
